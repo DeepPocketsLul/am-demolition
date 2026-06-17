@@ -61,7 +61,7 @@
     .footer-social-link:hover { color: #fff; }
     .header-social { color: #6E8BF5; transition: color .18s, background .18s, border-color .18s, transform .18s, box-shadow .18s; }
     .header-social:hover { color: #fff; background: #1E50E5; border-color: #1E50E5; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(30,80,229,.45); }
-    .leaflet-container { background: #0E0F12; font-family: 'Barlow', sans-serif; }
+    .leaflet-container { background: #e6e8ea; font-family: 'Barlow', sans-serif; }
     .map-city-label { background: rgba(11,11,13,.9); border: 1px solid #2c3550; color: #E2E4E6; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: .5px; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; box-shadow: none; }
     .map-city-label::before { display: none; }
     .leaflet-control-attribution { background: rgba(11,11,13,.7) !important; color: #6B7280 !important; }
@@ -297,7 +297,7 @@
       </div>
       <!-- Coverage area map (Leaflet + highlighted service area) -->
       <div style="position:relative; border:1px solid #23252B; border-radius:8px; overflow:hidden; background:#0E0F12;">
-        <div id="coverage-map" style="aspect-ratio:4/3; min-height:300px; width:100%; background:#0E0F12; z-index:0;"></div>
+        <div id="coverage-map" style="aspect-ratio:4/3; min-height:300px; width:100%; background:#e6e8ea; z-index:0;"></div>
         <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; padding:13px 16px; border-top:1px solid #1d1f25; background:#0E0F12;">
           <span style="display:inline-flex; align-items:center; gap:8px; color:#9CA3AF; font-size:12.5px;"><span style="width:13px; height:13px; border-radius:3px; background:rgba(30,80,229,.45); border:1px solid #1E50E5;"></span>Areas we cover</span>
           <a href="https://www.google.com/maps/search/?api=1&amp;query=Modesto+CA" target="_blank" rel="noopener" style="text-decoration:none; display:inline-flex; align-items:center; gap:7px; color:#7FA0FF; font-family:'Oswald',sans-serif; font-weight:600; font-size:12.5px; letter-spacing:1px; text-transform:uppercase;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7FA0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Open in Google Maps</a>
@@ -538,8 +538,8 @@
 
     var map = L.map('coverage-map', { scrollWheelZoom: false, attributionControl: true });
 
-    // Dark base tiles to match the site theme (CARTO dark, no API key)
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    // Light base tiles (CARTO Positron, no API key)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; OpenStreetMap &copy; CARTO',
       subdomains: 'abcd', maxZoom: 19
     }).addTo(map);
@@ -559,17 +559,19 @@
     }).addTo(map);
 
     // City markers
+    // Only a few spread-out cities get permanent labels (avoids overlap);
+    // the rest show their label on hover.
     var cities = [
       ['Bay Area', 37.70, -122.10, true],
       ['Tracy', 37.74, -121.43, false],
-      ['Stockton', 37.96, -121.29, false],
+      ['Stockton', 37.96, -121.29, true],
       ['Lodi', 38.13, -121.27, false],
       ['Manteca', 37.80, -121.22, false],
       ['Modesto', 37.64, -120.99, true],
       ['Ceres', 37.59, -120.96, false],
       ['Riverbank', 37.74, -120.94, false],
       ['Oakdale', 37.77, -120.85, false],
-      ['Turlock', 37.49, -120.85, false]
+      ['Turlock', 37.49, -120.85, true]
     ];
     cities.forEach(function (c) {
       var major = c[3];
