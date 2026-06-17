@@ -58,8 +58,8 @@
     .footer-email-link:hover { color: #fff; }
     .footer-social-link { transition: color .15s; }
     .footer-social-link:hover { color: #fff; }
-    .header-social { transition: background .15s, border-color .15s; }
-    .header-social:hover { background: rgba(30,80,229,.18); border-color: #3B66F0; }
+    .header-social { color: #6E8BF5; transition: color .18s, background .18s, border-color .18s, transform .18s, box-shadow .18s; }
+    .header-social:hover { color: #fff; background: #1E50E5; border-color: #1E50E5; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(30,80,229,.45); }
 
     .footer-call-btn { transition: background .15s; }
     .footer-call-btn:hover { background: #3B66F0; }
@@ -95,7 +95,7 @@
         <a href="#contact" class="nav-link" style="text-decoration:none; color:#C9CCD1; font-family:'Oswald',sans-serif; font-weight:500; font-size:14px; letter-spacing:1.5px; text-transform:uppercase;">Contact</a>
       </nav>
       <div style="flex:0 0 auto; display:inline-flex; align-items:center; gap:12px;">
-      <a href="https://www.facebook.com/p/AM-Demolition-61590587055085/" target="_blank" rel="noopener" aria-label="A&amp;M Demolition on Facebook" class="header-social" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:4px; border:1px solid #2c2f37; background:rgba(255,255,255,.03);"><svg width="19" height="19" viewBox="0 0 24 24" fill="#C9CCD1"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.78-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.9h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z"/></svg></a>
+      <a href="https://www.facebook.com/p/AM-Demolition-61590587055085/" target="_blank" rel="noopener" aria-label="A&amp;M Demolition on Facebook" class="header-social" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center; width:42px; height:42px; border-radius:50%; border:1.5px solid #2c3550; background:rgba(30,80,229,.10);"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.78-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.9h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z"/></svg></a>
       <a href="tel:+12094860202" class="btn-call-header" style="flex:0 0 auto; text-decoration:none; display:inline-flex; align-items:center; gap:9px; background:#1E50E5; color:#fff; font-family:'Oswald',sans-serif; font-weight:600; font-size:clamp(13px,1.8vw,15px); letter-spacing:1px; text-transform:uppercase; padding:11px 18px; border-radius:4px; animation:ctaPulse 2.8s ease-in-out infinite;">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         <span>Call 209-486-0202</span>
@@ -289,11 +289,63 @@
           <span style="font-family:'Oswald',sans-serif; font-weight:500; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#C9CCD1; border:1px solid #2c2f37; border-radius:4px; padding:7px 13px;">Bay Area</span>
         </div>
       </div>
-      <!-- Map embed placeholder -->
-      <div style="position:relative; aspect-ratio:4/3; min-height:240px; border:1px dashed #2c2f37; border-radius:8px; background:repeating-linear-gradient(45deg,#101116,#101116 14px,#0d0e12 14px,#0d0e12 28px); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; text-align:center; padding:24px;">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1E50E5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-        <div style="font-family:'Oswald',sans-serif; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:#C9CCD1; font-size:14px;">Google Map Embed</div>
-        <div style="color:#6B7280; font-size:13px; max-width:240px; line-height:1.5;">Drop your Google Maps service-area embed here.</div>
+      <!-- Coverage area map -->
+      <div style="position:relative; border:1px solid #23252B; border-radius:8px; overflow:hidden; background:#0A0E16;">
+        <svg viewBox="0 0 400 300" width="100%" style="display:block;" role="img" aria-label="Map of A&amp;M Demolition coverage area from the Bay Area across the Central Valley">
+          <defs>
+            <radialGradient id="cover" cx="50%" cy="50%" r="60%">
+              <stop offset="0%" stop-color="#1E50E5" stop-opacity=".42"/>
+              <stop offset="70%" stop-color="#1E50E5" stop-opacity=".20"/>
+              <stop offset="100%" stop-color="#1E50E5" stop-opacity=".06"/>
+            </radialGradient>
+            <linearGradient id="land" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#141821"/>
+              <stop offset="100%" stop-color="#0F131B"/>
+            </linearGradient>
+          </defs>
+          <!-- ocean / base -->
+          <rect width="400" height="300" fill="#0A0E16"/>
+          <!-- land mass (stylized Northern California) -->
+          <path d="M70 0 L400 0 L400 300 L120 300 C150 250 130 215 165 195 C150 175 175 150 150 138 C120 150 95 140 88 120 C70 130 55 115 78 95 C60 80 95 60 78 40 C72 22 60 12 70 0 Z" fill="url(#land)" stroke="#222732" stroke-width="1"/>
+          <!-- San Francisco Bay (water notch) -->
+          <path d="M88 120 C95 140 120 150 150 138 C140 160 120 175 118 200 C100 190 92 165 90 150 C84 140 86 130 88 120 Z" fill="#0A0E16" opacity=".9"/>
+          <!-- coverage highlight zone -->
+          <path d="M92 152 C108 105 185 75 250 115 C292 142 292 188 256 212 C212 240 150 236 120 206 C94 186 82 178 92 152 Z" fill="url(#cover)" stroke="#1E50E5" stroke-width="1.4" stroke-opacity=".7" stroke-dasharray="5 4"/>
+
+          <!-- city pins -->
+          <g font-family="'Oswald',sans-serif" font-size="9" letter-spacing=".5" fill="#E2E4E6">
+            <!-- Bay Area cluster -->
+            <circle cx="100" cy="158" r="4.5" fill="#3B66F0" stroke="#0A0E16" stroke-width="1.5"/>
+            <text x="100" y="176" text-anchor="middle" font-weight="600">BAY AREA</text>
+            <!-- Tracy -->
+            <circle cx="150" cy="160" r="3" fill="#7FA0FF"/><text x="150" y="150" text-anchor="middle" fill="#C9CCD1">Tracy</text>
+            <!-- Stockton -->
+            <circle cx="188" cy="118" r="3" fill="#7FA0FF"/><text x="188" y="110" text-anchor="middle" fill="#C9CCD1">Stockton</text>
+            <!-- Lodi -->
+            <circle cx="198" cy="95" r="3" fill="#7FA0FF"/><text x="198" y="87" text-anchor="middle" fill="#C9CCD1">Lodi</text>
+            <!-- Manteca -->
+            <circle cx="195" cy="140" r="3" fill="#7FA0FF"/><text x="207" y="138" text-anchor="start" fill="#C9CCD1">Manteca</text>
+            <!-- Modesto -->
+            <circle cx="212" cy="170" r="4" fill="#3B66F0" stroke="#0A0E16" stroke-width="1.2"/><text x="212" y="187" text-anchor="middle" font-weight="600">MODESTO</text>
+            <!-- Riverbank -->
+            <circle cx="238" cy="158" r="3" fill="#7FA0FF"/><text x="250" y="156" text-anchor="start" fill="#C9CCD1">Riverbank</text>
+            <!-- Oakdale -->
+            <circle cx="252" cy="146" r="3" fill="#7FA0FF"/><text x="264" y="144" text-anchor="start" fill="#C9CCD1">Oakdale</text>
+            <!-- Ceres -->
+            <circle cx="218" cy="190" r="3" fill="#7FA0FF"/><text x="218" y="204" text-anchor="middle" fill="#C9CCD1">Ceres</text>
+            <!-- Turlock -->
+            <circle cx="232" cy="208" r="3" fill="#7FA0FF"/><text x="232" y="222" text-anchor="middle" fill="#C9CCD1">Turlock</text>
+          </g>
+
+          <!-- label -->
+          <text x="300" y="40" text-anchor="middle" font-family="'Oswald',sans-serif" font-size="11" letter-spacing="2" fill="#1E50E5" font-weight="600">CENTRAL VALLEY</text>
+          <text x="62" y="250" text-anchor="middle" font-family="'Oswald',sans-serif" font-size="9" letter-spacing="1.5" fill="#3a4150" transform="rotate(-90 62 250)">PACIFIC OCEAN</text>
+        </svg>
+        <!-- legend + link -->
+        <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; padding:13px 16px; border-top:1px solid #1d1f25; background:#0E0F12;">
+          <span style="display:inline-flex; align-items:center; gap:8px; color:#9CA3AF; font-size:12.5px;"><span style="width:13px; height:13px; border-radius:3px; background:rgba(30,80,229,.4); border:1px solid #1E50E5;"></span>Our coverage area</span>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Modesto+CA" target="_blank" rel="noopener" style="text-decoration:none; display:inline-flex; align-items:center; gap:7px; color:#7FA0FF; font-family:'Oswald',sans-serif; font-weight:600; font-size:12.5px; letter-spacing:1px; text-transform:uppercase;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7FA0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>View on Google Maps</a>
+        </div>
       </div>
     </div>
   </section>
