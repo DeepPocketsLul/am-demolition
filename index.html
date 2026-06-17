@@ -536,7 +536,18 @@
     var el = document.getElementById('coverage-map');
     if (!el || typeof L === 'undefined') return;
 
-    var map = L.map('coverage-map', { scrollWheelZoom: false, attributionControl: true });
+    // Static, locked map — no panning or zooming on any device.
+    var map = L.map('coverage-map', {
+      dragging: false,
+      scrollWheelZoom: false,
+      doubleClickZoom: false,
+      touchZoom: false,
+      boxZoom: false,
+      keyboard: false,
+      zoomControl: false,
+      tap: false,
+      attributionControl: true
+    });
 
     // Light base tiles (CARTO Positron, no API key)
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
