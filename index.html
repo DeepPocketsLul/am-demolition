@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; }
@@ -60,6 +61,11 @@
     .footer-social-link:hover { color: #fff; }
     .header-social { color: #6E8BF5; transition: color .18s, background .18s, border-color .18s, transform .18s, box-shadow .18s; }
     .header-social:hover { color: #fff; background: #1E50E5; border-color: #1E50E5; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(30,80,229,.45); }
+    .leaflet-container { background: #0E0F12; font-family: 'Barlow', sans-serif; }
+    .map-city-label { background: rgba(11,11,13,.9); border: 1px solid #2c3550; color: #E2E4E6; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: .5px; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; box-shadow: none; }
+    .map-city-label::before { display: none; }
+    .leaflet-control-attribution { background: rgba(11,11,13,.7) !important; color: #6B7280 !important; }
+    .leaflet-control-attribution a { color: #7FA0FF !important; }
 
     .footer-call-btn { transition: background .15s; }
     .footer-call-btn:hover { background: #3B66F0; }
@@ -289,13 +295,11 @@
           <span style="font-family:'Oswald',sans-serif; font-weight:500; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#C9CCD1; border:1px solid #2c2f37; border-radius:4px; padding:7px 13px;">Bay Area</span>
         </div>
       </div>
-      <!-- Coverage area map (live Google map) -->
+      <!-- Coverage area map (Leaflet + highlighted service area) -->
       <div style="position:relative; border:1px solid #23252B; border-radius:8px; overflow:hidden; background:#0E0F12;">
-        <div style="position:relative; aspect-ratio:4/3; min-height:280px;">
-          <iframe title="A&amp;M Demolition service area — Bay Area to the Central Valley" src="https://maps.google.com/maps?q=Modesto,CA&amp;z=8&amp;output=embed" style="position:absolute; inset:0; width:100%; height:100%; border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-        </div>
+        <div id="coverage-map" style="aspect-ratio:4/3; min-height:300px; width:100%; background:#0E0F12; z-index:0;"></div>
         <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; padding:13px 16px; border-top:1px solid #1d1f25; background:#0E0F12;">
-          <span style="color:#9CA3AF; font-size:12.5px;">Serving the Central Valley up to the Bay Area</span>
+          <span style="display:inline-flex; align-items:center; gap:8px; color:#9CA3AF; font-size:12.5px;"><span style="width:13px; height:13px; border-radius:3px; background:rgba(30,80,229,.45); border:1px solid #1E50E5;"></span>Areas we cover</span>
           <a href="https://www.google.com/maps/search/?api=1&amp;query=Modesto+CA" target="_blank" rel="noopener" style="text-decoration:none; display:inline-flex; align-items:center; gap:7px; color:#7FA0FF; font-family:'Oswald',sans-serif; font-weight:600; font-size:12.5px; letter-spacing:1px; text-transform:uppercase;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7FA0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Open in Google Maps</a>
         </div>
       </div>
@@ -522,6 +526,65 @@
 
       seen.forEach(function (d, el) { io.observe(el); });
     } catch (err) {}
+  })();
+</script>
+
+<!-- Leaflet coverage map -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+  (function () {
+    var el = document.getElementById('coverage-map');
+    if (!el || typeof L === 'undefined') return;
+
+    var map = L.map('coverage-map', { scrollWheelZoom: false, attributionControl: true });
+
+    // Dark base tiles to match the site theme (CARTO dark, no API key)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; OpenStreetMap &copy; CARTO',
+      subdomains: 'abcd', maxZoom: 19
+    }).addTo(map);
+
+    // Highlighted coverage area — Bay Area across the Central Valley
+    var coverage = [
+      [38.22, -121.42], // N (above Lodi)
+      [38.05, -120.72], // NE (above Oakdale)
+      [37.44, -120.68], // SE (below Turlock)
+      [37.24, -121.78], // S (San Jose)
+      [37.46, -122.36], // SW (Bay)
+      [37.96, -122.42]  // NW (Bay / Richmond)
+    ];
+    var area = L.polygon(coverage, {
+      color: '#3B66F0', weight: 2, opacity: .9,
+      fillColor: '#1E50E5', fillOpacity: .22
+    }).addTo(map);
+
+    // City markers
+    var cities = [
+      ['Bay Area', 37.70, -122.10, true],
+      ['Tracy', 37.74, -121.43, false],
+      ['Stockton', 37.96, -121.29, false],
+      ['Lodi', 38.13, -121.27, false],
+      ['Manteca', 37.80, -121.22, false],
+      ['Modesto', 37.64, -120.99, true],
+      ['Ceres', 37.59, -120.96, false],
+      ['Riverbank', 37.74, -120.94, false],
+      ['Oakdale', 37.77, -120.85, false],
+      ['Turlock', 37.49, -120.85, false]
+    ];
+    cities.forEach(function (c) {
+      var major = c[3];
+      L.circleMarker([c[1], c[2]], {
+        radius: major ? 8 : 5,
+        color: '#0B0B0D', weight: 1.5,
+        fillColor: major ? '#3B66F0' : '#7FA0FF', fillOpacity: 1
+      }).addTo(map).bindTooltip(c[0], {
+        permanent: major, direction: 'top',
+        className: 'map-city-label', offset: [0, -4]
+      });
+    });
+
+    map.fitBounds(area.getBounds(), { padding: [24, 24] });
+    setTimeout(function () { map.invalidateSize(); }, 200);
   })();
 </script>
 </body>
