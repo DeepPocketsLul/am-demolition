@@ -289,62 +289,14 @@
           <span style="font-family:'Oswald',sans-serif; font-weight:500; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#C9CCD1; border:1px solid #2c2f37; border-radius:4px; padding:7px 13px;">Bay Area</span>
         </div>
       </div>
-      <!-- Coverage area map -->
-      <div style="position:relative; border:1px solid #23252B; border-radius:8px; overflow:hidden; background:#0A0E16;">
-        <svg viewBox="0 0 400 300" width="100%" style="display:block;" role="img" aria-label="Map of A&amp;M Demolition coverage area from the Bay Area across the Central Valley">
-          <defs>
-            <radialGradient id="cover" cx="50%" cy="50%" r="60%">
-              <stop offset="0%" stop-color="#1E50E5" stop-opacity=".42"/>
-              <stop offset="70%" stop-color="#1E50E5" stop-opacity=".20"/>
-              <stop offset="100%" stop-color="#1E50E5" stop-opacity=".06"/>
-            </radialGradient>
-            <linearGradient id="land" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#141821"/>
-              <stop offset="100%" stop-color="#0F131B"/>
-            </linearGradient>
-          </defs>
-          <!-- ocean / base -->
-          <rect width="400" height="300" fill="#0A0E16"/>
-          <!-- land mass (stylized Northern California) -->
-          <path d="M70 0 L400 0 L400 300 L120 300 C150 250 130 215 165 195 C150 175 175 150 150 138 C120 150 95 140 88 120 C70 130 55 115 78 95 C60 80 95 60 78 40 C72 22 60 12 70 0 Z" fill="url(#land)" stroke="#222732" stroke-width="1"/>
-          <!-- San Francisco Bay (water notch) -->
-          <path d="M88 120 C95 140 120 150 150 138 C140 160 120 175 118 200 C100 190 92 165 90 150 C84 140 86 130 88 120 Z" fill="#0A0E16" opacity=".9"/>
-          <!-- coverage highlight zone -->
-          <path d="M92 152 C108 105 185 75 250 115 C292 142 292 188 256 212 C212 240 150 236 120 206 C94 186 82 178 92 152 Z" fill="url(#cover)" stroke="#1E50E5" stroke-width="1.4" stroke-opacity=".7" stroke-dasharray="5 4"/>
-
-          <!-- city pins -->
-          <g font-family="'Oswald',sans-serif" font-size="9" letter-spacing=".5" fill="#E2E4E6">
-            <!-- Bay Area cluster -->
-            <circle cx="100" cy="158" r="4.5" fill="#3B66F0" stroke="#0A0E16" stroke-width="1.5"/>
-            <text x="100" y="176" text-anchor="middle" font-weight="600">BAY AREA</text>
-            <!-- Tracy -->
-            <circle cx="150" cy="160" r="3" fill="#7FA0FF"/><text x="150" y="150" text-anchor="middle" fill="#C9CCD1">Tracy</text>
-            <!-- Stockton -->
-            <circle cx="188" cy="118" r="3" fill="#7FA0FF"/><text x="188" y="110" text-anchor="middle" fill="#C9CCD1">Stockton</text>
-            <!-- Lodi -->
-            <circle cx="198" cy="95" r="3" fill="#7FA0FF"/><text x="198" y="87" text-anchor="middle" fill="#C9CCD1">Lodi</text>
-            <!-- Manteca -->
-            <circle cx="195" cy="140" r="3" fill="#7FA0FF"/><text x="207" y="138" text-anchor="start" fill="#C9CCD1">Manteca</text>
-            <!-- Modesto -->
-            <circle cx="212" cy="170" r="4" fill="#3B66F0" stroke="#0A0E16" stroke-width="1.2"/><text x="212" y="187" text-anchor="middle" font-weight="600">MODESTO</text>
-            <!-- Riverbank -->
-            <circle cx="238" cy="158" r="3" fill="#7FA0FF"/><text x="250" y="156" text-anchor="start" fill="#C9CCD1">Riverbank</text>
-            <!-- Oakdale -->
-            <circle cx="252" cy="146" r="3" fill="#7FA0FF"/><text x="264" y="144" text-anchor="start" fill="#C9CCD1">Oakdale</text>
-            <!-- Ceres -->
-            <circle cx="218" cy="190" r="3" fill="#7FA0FF"/><text x="218" y="204" text-anchor="middle" fill="#C9CCD1">Ceres</text>
-            <!-- Turlock -->
-            <circle cx="232" cy="208" r="3" fill="#7FA0FF"/><text x="232" y="222" text-anchor="middle" fill="#C9CCD1">Turlock</text>
-          </g>
-
-          <!-- label -->
-          <text x="300" y="40" text-anchor="middle" font-family="'Oswald',sans-serif" font-size="11" letter-spacing="2" fill="#1E50E5" font-weight="600">CENTRAL VALLEY</text>
-          <text x="62" y="250" text-anchor="middle" font-family="'Oswald',sans-serif" font-size="9" letter-spacing="1.5" fill="#3a4150" transform="rotate(-90 62 250)">PACIFIC OCEAN</text>
-        </svg>
-        <!-- legend + link -->
+      <!-- Coverage area map (live Google map) -->
+      <div style="position:relative; border:1px solid #23252B; border-radius:8px; overflow:hidden; background:#0E0F12;">
+        <div style="position:relative; aspect-ratio:4/3; min-height:280px;">
+          <iframe title="A&amp;M Demolition service area — Bay Area to the Central Valley" src="https://maps.google.com/maps?q=Modesto,CA&amp;z=8&amp;output=embed" style="position:absolute; inset:0; width:100%; height:100%; border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
         <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; padding:13px 16px; border-top:1px solid #1d1f25; background:#0E0F12;">
-          <span style="display:inline-flex; align-items:center; gap:8px; color:#9CA3AF; font-size:12.5px;"><span style="width:13px; height:13px; border-radius:3px; background:rgba(30,80,229,.4); border:1px solid #1E50E5;"></span>Our coverage area</span>
-          <a href="https://www.google.com/maps/search/?api=1&amp;query=Modesto+CA" target="_blank" rel="noopener" style="text-decoration:none; display:inline-flex; align-items:center; gap:7px; color:#7FA0FF; font-family:'Oswald',sans-serif; font-weight:600; font-size:12.5px; letter-spacing:1px; text-transform:uppercase;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7FA0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>View on Google Maps</a>
+          <span style="color:#9CA3AF; font-size:12.5px;">Serving the Central Valley up to the Bay Area</span>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Modesto+CA" target="_blank" rel="noopener" style="text-decoration:none; display:inline-flex; align-items:center; gap:7px; color:#7FA0FF; font-family:'Oswald',sans-serif; font-weight:600; font-size:12.5px; letter-spacing:1px; text-transform:uppercase;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7FA0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Open in Google Maps</a>
         </div>
       </div>
     </div>
